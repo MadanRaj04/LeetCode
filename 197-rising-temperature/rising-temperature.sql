@@ -1,0 +1,1 @@
+select today.id from Weather today CROSS JOIN Weather yesterday where DATEDIFF(today.recordDate,yesterday.recordDate) = 1 AND today.temperature > yesterday.temperature;
