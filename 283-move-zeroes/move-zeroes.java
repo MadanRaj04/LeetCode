@@ -4,7 +4,7 @@ class Solution {
         int tvar=0;
         for (int i =0;i<nums.length;i++)
         {
-            if(nums[i]>0 || nums[i]<0)
+            if(nums[i] != 0)
             {
                 tvar = nums[left];
                 nums[left] = nums[i];
