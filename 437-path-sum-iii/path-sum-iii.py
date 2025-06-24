@@ -6,29 +6,26 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-        prefix_sums = {0: 1}  # sum 0 appears once (empty path)
-        count = 0
-        
-        def dfs(node, current_sum):
+        freq = {0:1}
+        count=0
+        def dfs(root,targetSum,prefsum):
             nonlocal count
-            if not node:
-                return
-            
-            # Update the current sum
-            current_sum += node.val
-            
-            # Check if there is a prefix sum that we can subtract to get targetSum
-            count += prefix_sums.get(current_sum - targetSum, 0)
-            
-            # Add current sum to prefix_sums dictionary
-            prefix_sums[current_sum] = prefix_sums.get(current_sum, 0) + 1
-            
-            # Traverse left and right children
-            dfs(node.left, current_sum)
-            dfs(node.right, current_sum)
-            
-            # Remove current sum from prefix_sums to backtrack
-            prefix_sums[current_sum] -= 1
-        
-        dfs(root, 0)
+            if root == None:
+                return 
+
+            prefsum+=root.val
+            if(freq.get(prefsum-targetSum,0)):
+                print("entered")
+                count+=freq[prefsum - targetSum]
+
+
+            freq[prefsum] = freq.get(prefsum,0)+1
+
+
+            dfs(root.left,targetSum,prefsum)
+            dfs(root.right,targetSum,prefsum)
+            freq[prefsum] -= 1
+
+        dfs(root,targetSum,0)
+
         return count
