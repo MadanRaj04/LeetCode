@@ -19,14 +19,15 @@ public:
             return;
         }
         path.push_back(root->val);
-        targetSum-= root->val;
         if(root->left == nullptr && root->right == nullptr)
         {
-            if(targetSum==0)
+            if(targetSum==root->val)
             {
                 res.push_back(path);
             }
         }
+                targetSum-= root->val;
+
         recur(root->left,targetSum,path,res);
         recur(root->right,targetSum,path,res);
         path.pop_back();
