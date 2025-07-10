@@ -23,12 +23,12 @@ class Solution {
 public:
     Node* dfs(Node* node,unordered_map<Node*,Node*>& mp)
     {
-        Node* clone = new Node(node->val);
-        mp[node] = clone;
         vector<Node*> neighbor;
-        for(auto it: node->neighbors)
+        Node* clone = new Node(node->val);
+        mp[node]=clone;
+        for(auto it:node->neighbors)
         {
-            if(mp.find(it) != mp.end())
+            if(mp.find(it)!=mp.end())
             {
                 neighbor.push_back(mp[it]);
             }
@@ -37,16 +37,14 @@ public:
                 neighbor.push_back(dfs(it,mp));
             }
         }
-
-        clone->neighbors = neighbor;
-
+        clone->neighbors=neighbor;
         return clone;
-
     }
 
     Node* cloneGraph(Node* node) {
         unordered_map<Node*,Node*> mp;
         if(node==nullptr) return nullptr;
-        return dfs(node,mp);
+        Node* clone = dfs(node,mp);
+        return clone;
     }
 };
