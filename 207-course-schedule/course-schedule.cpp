@@ -23,7 +23,7 @@ public:
         }
 
         queue<int> zero;
-        queue<int> res;
+        int res=0;
         for(int i=0;i<numCourses;i++)
         {
             if(indegree[i]==0)
@@ -35,7 +35,7 @@ public:
         {
             int cur = zero.front();
             zero.pop();
-            res.push(cur);
+            res++;
             for(auto& it:mp[cur])
             {
                 indegree[it]--;
@@ -43,7 +43,7 @@ public:
                 if(indegree[it]==0) zero.push(it);
             }
         }
-        if(res.size()!= numCourses)
+        if(res != numCourses)
         {
             return false;
         }
