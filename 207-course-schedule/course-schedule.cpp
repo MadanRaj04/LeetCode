@@ -36,7 +36,7 @@ public:
             int cur = zero.front();
             zero.pop();
             res.push(cur);
-            for(auto it:mp[cur])
+            for(auto& it:mp[cur])
             {
                 indegree[it]--;
 
