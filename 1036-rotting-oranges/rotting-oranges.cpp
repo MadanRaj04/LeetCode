@@ -49,6 +49,6 @@ public:
         }
         if(ones!=0) return -1;
 
-        return count-1;
+        return count == 0 ? 0 : count - 1;
     }
 };
