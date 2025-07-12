@@ -16,7 +16,7 @@ public:
         vector<int> indegree(numCourses,0);
         for(int i=0;i<mp.size();i++)
         {
-            for(auto& it:mp[i])
+            for(auto it:mp[i])
             {
                 indegree[it]++;
             }
@@ -36,7 +36,7 @@ public:
             int cur = zero.front();
             zero.pop();
             res++;
-            for(auto& it:mp[cur])
+            for(auto it:mp[cur])
             {
                 indegree[it]--;
 
