@@ -1,7 +1,7 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
-        vector<vector<int>> directions = {{1,0},{-1,0},{0,1},{0,-1}};
+        const vector<vector<int>> directions = {{1,0},{-1,0},{0,1},{0,-1}};
         int ones=0;
         queue<pair<int,int>> qp;
         for(int i=0;i<grid.size();i++)
@@ -33,7 +33,7 @@ public:
             {
                 auto [r,c] = qp.front();qp.pop();
 
-                for(auto it:directions)
+                for(auto& it:directions)
                 {
                     int nx = r+it[0];
                     int ny = c+it[1];
